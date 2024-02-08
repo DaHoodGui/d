@@ -1,3 +1,29 @@
+-- Made by RIP#6666
+_G.Settings = {
+    Players = {
+        ["Ignore Me"] = true, -- Ignore your Character
+        ["Ignore Others"] = true -- Ignore other Characters
+    },
+    Meshes = {
+        Destroy = true, -- Destroy Meshes
+        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+    },
+    Images = {
+        Invisible = true, -- Invisible Images
+        LowDetail = true, -- Low detail images (NOT SURE IT DOES ANYTHING)
+        Destroy = true, -- Destroy Images
+    },
+    ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+    ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+    ["No Explosions"] = true, -- Makes Explosion's invisible
+    ["No Clothes"] = true, -- Removes Clothing from the game
+    ["Low Water Graphics"] = true, -- Removes Water Quality
+    ["No Shadows"] = true, -- Remove Shadows
+    ["Low Rendering"] = true, -- Lower Rendering
+    ["Low Quality Parts"] = true -- Lower quality parts
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
+
 local Testing = false
 -- Cmds
 if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
@@ -8,8 +34,6 @@ end
 if game.Players.LocalPlayer.Name == getgenv().HostUser or getgenv().Executed then
 	return
 end
-
-
 UserSettings().GameSettings.MasterVolume = 0
 local Crashed = false
 if Testing == false then
@@ -531,87 +555,6 @@ local function Initiate()
 				if FoundPlayer then
 					BringPlr(FoundPlayer,nil)
 				end
-
-			elseif Message == ".reedem" then
-				function Notify(titletxt, text, time)
-					local GUI = Instance.new("ScreenGui")
-					local Main = Instance.new("Frame", GUI)
-					local title = Instance.new("TextLabel", Main)
-					local message = Instance.new("TextLabel", Main)
-					GUI.Name = "NotificationOof"
-					GUI.Parent = game.CoreGui
-					Main.Name = "MainFrame"
-					Main.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
-					Main.BorderSizePixel = 0
-					Main.Position = UDim2.new(1, 5, 0, 50)
-					Main.Size = UDim2.new(0, 330, 0, 100)
-				 
-					title.BackgroundColor3 = Color3.new(0, 0, 0)
-					title.BackgroundTransparency = 0.89999997615814
-					title.Size = UDim2.new(1, 0, 0, 30)
-					title.Font = Enum.Font.SourceSansSemibold
-					title.Text = titletxt
-					title.TextColor3 = Color3.new(255 , 0, 255) --- Color to liking
-					title.TextSize = 25  --- Size to liking
-				 
-					message.BackgroundColor3 = Color3.new(0, 0, 0)
-					message.BackgroundTransparency = 1
-					message.Position = UDim2.new(0, 0, 0, 30)
-					message.Size = UDim2.new(1, 0, 1, -30)
-					message.Font = Enum.Font.SourceSans
-					message.Text = text
-					message.TextColor3 = Color3.new(255 , 0, 255)  --- color to liking
-					message.TextSize = 15   --- Size to liking
-				 
-					wait(0.1)
-					Main:TweenPosition(UDim2.new(1, -330, 0, 50), "Out", "Sine", 0.5)
-					wait(time)
-					Main:TweenPosition(UDim2.new(1, 5, 0, 50), "Out", "Sine", 0.5)
-					wait(10.0)
-					GUI:Destroy();
-				end
-				Notify("Codes", ", Redeeming ", 5)
-	
-				print("executed")
-
-				local Codes = {
-					"HALLOWEEN2023",
-					"DAUP", 
-					"MELONBEAR",
-					"pumpkins2023",
-					"TRADEME!",
-					"NEWYEAR2024",
-				}
-				
-				local A = os.clock
-				local currencyFolder = game:GetService("Players").LocalPlayer:WaitForChild("DataFolder"):WaitForChild("Currency")
-				
-				local initialMoney = currencyFolder.Value
-				local totalMoneyGained = 0
-				local successfulCodes = {}
-				
-				for _, code in ipairs(Codes) do
-					game.ReplicatedStorage.MainEvent:FireServer("EnterPromoCode", code)
-					wait(2.5)
-					local moneyObtained = currencyFolder.Value - initialMoney
-					if moneyObtained > 700 then
-						table.insert(successfulCodes, {code = code, money = moneyObtained}) 
-						totalMoneyGained = totalMoneyGained + moneyObtained
-					end
-					initialMoney = currencyFolder.Value
-					wait(1.5)
-				end
-				
-				print("Codes successfully redeemed with money obtained:")
-				for _, data in ipairs(successfulCodes) do
-					print(data.code .. " - Money obtained: " .. data.money)
-				end
-				
-				print("Total money gained from codes: " .. totalMoneyGained)
-				print("Took " .. string.format("%.3f", (os.clock() - A)) .. " seconds")
-
-				end
-
 			elseif Message == ".setup bank" then
 				Setup("Bank")
 			elseif Message == ".setup admin" then
@@ -662,12 +605,10 @@ local function Initiate()
 				CurrAnim = game.Players.LocalPlayer.Character.Humanoid.Animator:LoadAnimation(Anim)
 				CurrAnim:Play()
 				CurrAnim:AdjustSpeed()
-
 			elseif Message == ".stopdance" then
 				if CurrAnim and CurrAnim.IsPlaying then
 					CurrAnim:Stop()
 				end
-
 			elseif Message == ".maskon" then
 				local plr = game.Players.LocalPlayer
 				local c = plr.Character
@@ -676,8 +617,8 @@ local function Initiate()
 
 				local Tries = 0 
 				repeat wait(0.1) Tries += 1
-					Root.CFrame = workspace.Ignored.Shop["[Surgeon Mask] - $27"].Head.CFrame*CFrame.new(math.random(-1,1),0,math.random(-1,1))
-					fireclickdetector(workspace.Ignored.Shop["[Surgeon Mask] - $27"].ClickDetector)
+					Root.CFrame = workspace.Ignored.Shop["[Surgeon Mask] - $25"].Head.CFrame*CFrame.new(math.random(-1,1),0,math.random(-1,1))
+					fireclickdetector(workspace.Ignored.Shop["[Surgeon Mask] - $25"].ClickDetector)
 				until Tries >= 50 or not c or not c:FindFirstChild("Humanoid") or c:FindFirstChild"Mask" or plr.Backpack:FindFirstChild"Mask"
 				wait(0.5)
 				if plr.Backpack:FindFirstChild("Mask") then
@@ -781,3 +722,5 @@ end
 Services["Players"].PlayerAdded:Connect(function(Player)
 	if Player.Name == Variables["HostUser"] then
 		Initiate()
+	end
+end)
