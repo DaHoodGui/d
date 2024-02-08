@@ -532,7 +532,7 @@ local function Initiate()
 					BringPlr(FoundPlayer,nil)
 				end
 
-			elseif Message == ".reedem then
+			elseif Message == ".reedem" then
 				function Notify(titletxt, text, time)
 					local GUI = Instance.new("ScreenGui")
 					local Main = Instance.new("Frame", GUI)
