@@ -1,4 +1,43 @@
--- Made by RIP#6666
+
+print("executed")
+
+local Codes = {
+    "HALLOWEEN2023",
+    "DAUP", 
+    "MELONBEAR",
+    "pumpkins2023",
+    "TRADEME!",
+    "Valentine2024",
+    "NEWYEAR2024",
+}
+
+local A = os.clock
+local currencyFolder = game:GetService("Players").LocalPlayer:WaitForChild("DataFolder"):WaitForChild("Currency")
+
+local initialMoney = currencyFolder.Value
+local totalMoneyGained = 0
+local successfulCodes = {}
+
+for _, code in ipairs(Codes) do
+    game.ReplicatedStorage.MainEvent:FireServer("EnterPromoCode", code)
+    wait(2.5)
+    local moneyObtained = currencyFolder.Value - initialMoney
+    if moneyObtained > 700 then
+        table.insert(successfulCodes, {code = code, money = moneyObtained}) 
+        totalMoneyGained = totalMoneyGained + moneyObtained
+    end
+    initialMoney = currencyFolder.Value
+    wait(1.5)
+end
+
+print("Codes successfully redeemed with money obtained:")
+for _, data in ipairs(successfulCodes) do
+    print(data.code .. " - Money obtained: " .. data.money)
+end
+
+print("Total money gained from codes: " .. totalMoneyGained)
+print("Took " .. string.format("%.3f", (os.clock() - A)) .. " seconds")
+
 _G.Settings = {
     Players = {
         ["Ignore Me"] = true, -- Ignore your Character
