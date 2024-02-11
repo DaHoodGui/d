@@ -650,7 +650,8 @@ local function Initiate()
 
 						while CmdSettings["Aura"] == true and DropFolder do
 							if DropFolder then
-								for i,v in pairs(DropFolder:GetChildren()) do
+								--for i,v in pairs(DropFolder:GetChildren()) do
+	                                                         for i,v money in ipairs(game.Workspace.Ignored.Drop:GetChildren()) do
 									if v:IsA("BasePart") and v.Name == "MoneyDrop" then
 										if (v.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 12 then
 											if CmdSettings["Aura"] == true then
@@ -674,7 +675,8 @@ local function Initiate()
 					CmdSettings["Dropping"] = false
 
 					local OldMoney = 0
-					for i,v in pairs(DropFolder:GetChildren()) do
+                                        for i,v in ipairs(game.Workspace.Ignored.Drop:GetChildren()) do
+					--for i,v in pairs(DropFolder:GetChildren()) do
 						if v.Name == "MoneyDrop" then
 							local numbers = string.gsub(v.BillboardGui.TextLabel.Text, "%D", "")
 							OldMoney += numbers
