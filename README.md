@@ -377,6 +377,7 @@ local function ShowWallet()
 		Player.Character.Humanoid:EquipTool(Player.Backpack.Wallet)
 	end
 end
+
 local function RemoveWallet()
 	local Player = game.Players.LocalPlayer
 	if Player.Character:FindFirstChild("Wallet") then
