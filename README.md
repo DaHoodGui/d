@@ -24,6 +24,15 @@ _G.Settings = {
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
 
+
+
+
+
+
+
+
+
+
 local Testing = false
 -- Cmds
 if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
@@ -617,8 +626,8 @@ local function Initiate()
 
 				local Tries = 0 
 				repeat wait(0.1) Tries += 1
-					Root.CFrame = workspace.Ignored.Shop["[Surgeon Mask] - $27"].Head.CFrame*CFrame.new(math.random(-1,1),0,math.random(-1,1))
-					fireclickdetector(workspace.Ignored.Shop["[Surgeon Mask] - $27"].ClickDetector)
+					Root.CFrame = workspace.Ignored.Shop["[Surgeon Mask] - $25"].Head.CFrame*CFrame.new(math.random(-1,1),0,math.random(-1,1))
+					fireclickdetector(workspace.Ignored.Shop["[Surgeon Mask] - $25"].ClickDetector)
 				until Tries >= 50 or not c or not c:FindFirstChild("Humanoid") or c:FindFirstChild"Mask" or plr.Backpack:FindFirstChild"Mask"
 				wait(0.5)
 				if plr.Backpack:FindFirstChild("Mask") then
@@ -723,5 +732,4 @@ Services["Players"].PlayerAdded:Connect(function(Player)
 	if Player.Name == Variables["HostUser"] then
 		Initiate()
 	end
-end)
 end)
