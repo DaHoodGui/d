@@ -1,4 +1,4 @@
-
+print("d")
 local Testing = false
 -- Cmds
 if table.find(getgenv().Alts,game.Players.LocalPlayer.UserId) then
